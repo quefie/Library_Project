@@ -19,9 +19,15 @@ public class Librarian {
     private int librarianNumber;
     private String adress;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "loan_books")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "librarian")
     private Set<Book> loanBooks = new HashSet<>();
 
 
-
+    public Librarian(String firstName, String lastName, int librarianNumber, String adress, Set<Book> loanBooks) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.librarianNumber = librarianNumber;
+        this.adress = adress;
+        this.loanBooks = loanBooks;
+    }
 }

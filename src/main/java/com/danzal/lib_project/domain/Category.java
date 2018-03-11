@@ -15,4 +15,9 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Book> books;
+
+    public Category(String categoryName, Set<Book> books) {
+        this.categoryName = categoryName;
+        this.books = books;
+    }
 }
