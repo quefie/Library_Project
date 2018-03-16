@@ -9,16 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    private final AuthorService authorService;
-
-    public IndexController(AuthorService authorService) {
-        this.authorService = authorService;
-    }
 
     @RequestMapping({"","/","/index"})
-    public String getIndexPage(Model model){
+    public String getIndexPage(){
 
-        model.addAttribute("authors", authorService.getAuthors());
+        //model.addAttribute("authors", authorService.getAuthors());
         return "index";
     }
 }

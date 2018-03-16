@@ -14,11 +14,11 @@ public class AuthorsController {
         this.authorService = authorService;
     }
 
-    @RequestMapping("/authors/authors")
+    @RequestMapping("/authors/home")
     public String showAuthors(Model model){
 
         model.addAttribute("authors", authorService.getAuthors());
 
-        return "/authors/authors";
+        return "/authors/home";
     }
 }
