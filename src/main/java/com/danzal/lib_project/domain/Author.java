@@ -16,7 +16,7 @@ public class Author {
     private String lastName;
 
     @ManyToMany
-    @JoinTable(name = "author_book",
+    @JoinTable(name = "author_books",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name= "author_id"))
     private Set<Book> books = new HashSet<>();
@@ -33,12 +33,14 @@ public class Author {
         this.nationality = nationality;
     }
 
-    public Author(String firstName, String lastName, Set<Book> books, String nationality) {
+    public Author(String firstName, String lastName, Set<Book> authors, String nationality) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.books = books;
+        this.books = authors;
         this.nationality = nationality;
     }
+
+    public String getNames(){return this.firstName + " " + this.lastName;}
 
     public Long getId() {
         return id;

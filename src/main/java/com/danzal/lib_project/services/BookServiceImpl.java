@@ -1,6 +1,8 @@
 package com.danzal.lib_project.services;
 
+import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
+import com.danzal.lib_project.repositories.AuthorRepository;
 import com.danzal.lib_project.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 

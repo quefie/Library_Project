@@ -28,7 +28,7 @@ public class AuthorsBootstrap implements ApplicationListener<ContextRefreshedEve
     }
 
     private List<Author> getAuthors(){
-        List<Author> authors = new ArrayList<>(3);
+        List<Author> authors = new ArrayList<>();
 
         Author author1 = new Author("First 1#", "Last 1#", "Poland #1");
         Author author2 = new Author("First 2#", "Last 2#", "Poland #2");
@@ -37,6 +37,7 @@ public class AuthorsBootstrap implements ApplicationListener<ContextRefreshedEve
         authors.add(author1);
         authors.add(author2);
         authors.add(author3);
+
 
         return authors;
 
