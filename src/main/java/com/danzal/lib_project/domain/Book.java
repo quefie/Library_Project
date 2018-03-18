@@ -1,5 +1,7 @@
 package com.danzal.lib_project.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -7,11 +9,14 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Data
+@EqualsAndHashCode(exclude = {"authors"})
 @Entity
 public class Book {
 
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(name = "ID")
      private Long id;
      private String title;
      private String format;
@@ -22,8 +27,8 @@ public class Book {
      @Lob
      private String description;
 
-     @ManyToMany(mappedBy = "authors")
-     private Set<Author> authors;
+     @ManyToMany(mappedBy = "books")
+     private Set<Author> authors = new HashSet<>();
 
      @ManyToOne
      private Librarian librarian;
@@ -37,13 +42,22 @@ public class Book {
           public Book() {
           }
 
-          public Book(String title, String format, String language, int pubYear, String publisher, Set<Author> authors) {
+     public Book(String title, String format, String language, int pubYear, String publisher, Set<Author> authors) {
+          this.title = title;
+          this.format = format;
+          this.language = language;
+          this.pubYear = pubYear;
+          this.publisher = publisher;
+          this.authors = authors;
+     }
+
+     public Book(String title, String format, String language, int pubYear, String publisher) {
                this.title = title;
                this.format = format;
                this.language = language;
                this.pubYear = pubYear;
                this.publisher = publisher;
-               this.authors = authors;
+
           }
 
           public Book(String title, String format, String language, int pubYear, String publisher, String description, Set<Author> authors, Librarian librarian, Set<Category> categories) {
@@ -57,97 +71,5 @@ public class Book {
                this.librarian = librarian;
                this.categories = categories;
           }
-/*
-     public String getAuthorsN() {
 
-          String[] namesArray = authors.toArray(new String[authors.size()]);
-          String names = Arrays.toString(namesArray);
-
-          String contactString = authors.stream().map(Author::getNames).collect(Collectors.joining(","));
-
-          System.out.println(authors);
-          System.out.println(names);
-          System.out.println("\n" + contactString);
-          return names;
-     }
-*/
-     public Set<Author> getAuthors() {
-          return authors;
-     }
-
-     public Long getId() {
-          return id;
-     }
-
-     public void setId(Long id) {
-          this.id = id;
-     }
-
-     public String getTitle() {
-          return title;
-     }
-
-     public void setTitle(String title) {
-          this.title = title;
-     }
-
-     public String getFormat() {
-          return format;
-     }
-
-     public void setFormat(String format) {
-          this.format = format;
-     }
-
-     public String getLanguage() {
-          return language;
-     }
-
-     public void setLanguage(String language) {
-          this.language = language;
-     }
-
-     public int getPubYear() {
-          return pubYear;
-     }
-
-     public void setPubYear(int pubYear) {
-          this.pubYear = pubYear;
-     }
-
-     public String getPublisher() {
-          return publisher;
-     }
-
-     public void setPublisher(String publisher) {
-          this.publisher = publisher;
-     }
-
-     public String getDescription() {
-          return description;
-     }
-
-     public void setDescription(String description) {
-          this.description = description;
-     }
-
-     public void setAuthors(Set<Author> authors) {
-          this.authors = authors;
-     }
-
-     public Librarian getLibrarian() {
-          return librarian;
-     }
-
-     public void setLibrarian(Librarian librarian) {
-          this.librarian = librarian;
-     }
-
-     public Set<Category> getCategories() {
-          return categories;
-     }
-
-     public void setCategories(Set<Category> categories) {
-          this.categories = categories;
-     }
 }

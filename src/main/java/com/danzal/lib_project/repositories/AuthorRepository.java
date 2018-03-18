@@ -1,6 +1,7 @@
 package com.danzal.lib_project.repositories;
 
 import com.danzal.lib_project.domain.Author;
+import com.danzal.lib_project.domain.Book;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

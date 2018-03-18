@@ -10,4 +10,6 @@ public interface BookService {
 
     Set<Book> getBooks();
 
+    Set<Author> getBookAuthors();
+
 }

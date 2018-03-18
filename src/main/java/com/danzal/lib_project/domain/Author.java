@@ -1,28 +1,33 @@
 package com.danzal.lib_project.domain;
 
+import com.danzal.lib_project.repositories.BookRepository;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
+    @ElementCollection(targetClass = Long.class)
+    private Set<Long> bookId = new HashSet<>();
     private String firstName;
     private String lastName;
+    private String nationality;
 
     @ManyToMany
     @JoinTable(name = "author_books",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name= "author_id"))
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name= "book_id"))
     private Set<Book> books = new HashSet<>();
 
 
-    private String nationality;
 
     public Author() {
     }
@@ -37,48 +42,7 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
         this.books = authors;
-        this.nationality = nationality;
-    }
+        this.nationality = nationality;    }
 
-    public String getNames(){return this.firstName + " " + this.lastName;}
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
 }
