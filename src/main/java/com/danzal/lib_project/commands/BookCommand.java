@@ -1,8 +1,6 @@
 package com.danzal.lib_project.commands;
 
-import com.danzal.lib_project.domain.Author;
-import com.danzal.lib_project.domain.Category;
-import com.danzal.lib_project.domain.Librarian;
+import com.danzal.lib_project.domain.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,8 +15,9 @@ public class BookCommand {
 
     private Long id;
     private String title;
-    private String format;
-    private String language;
+    private Format format;
+    private Set<Long> authorId = new HashSet<>();
+    private Language language;
     private int pubYear;
     private String publisher;
     private String description;

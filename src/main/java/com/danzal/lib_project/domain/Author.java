@@ -19,30 +19,21 @@ public class Author {
     private Set<Long> bookId = new HashSet<>();
     private String firstName;
     private String lastName;
-    private String nationality;
+
+    @Enumerated(value = EnumType.STRING)
+    private Nationality nationality;
 
     @ManyToMany
     @JoinTable(name = "author_books",
             joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name= "book_id"))
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Book> books = new HashSet<>();
 
 
-
-    public Author() {
+    public String getNames() {
+        return this.firstName + " " + this.lastName;
     }
 
-    public Author(String firstName, String lastName, String nationality) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nationality = nationality;
-    }
-
-    public Author(String firstName, String lastName, Set<Book> authors, String nationality) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.books = authors;
-        this.nationality = nationality;    }
 
 
 }

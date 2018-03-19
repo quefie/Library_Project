@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Author Form</title>
+    <title>Book Form</title>
 
     <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css" crossorigin="anonymous">
 </head>
@@ -52,7 +52,7 @@
 
 
 <div class="container" style="margin-top: 10rem;">
-    <h2 style="text-align: center">The author form panel</h2>
+    <h2 style="text-align: center">The book form panel</h2>
 </div>
 
 
@@ -60,41 +60,64 @@
     <div class="bs-docs-section">
         <div class="row" style="margin-left: auto;">
             <div class="col-md-6 col-md-offset-6">
-                <form th:object="${author}" th:action="@{/authors/}" method="post">
+                <form th:object="${book}" th:action="@{/books/}" method="post">
                     <input type="hidden" th:field="*{id}"/>
                     <fieldset>
                         <div class="form-group">
                             <div class="row" style="margin-left: auto ">
-                                <label>First name</label>
-                                <input type="text" class="form-control" th:field="*{firstName}"/>
+                                <label>Title</label>
+                                <input type="text" class="form-control" th:field="*{title}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleSelect2">Authors</label>
+                            <select multiple="" class="form-control" id="exampleSelect2" th:field="*{authorId}">
+                                <option th:each="author : ${authors}" th:value="${author.id}"
+                                        th:text="${author.getNames()}">1
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Format</label>
+                            <select class="form-control" style="margin-left: auto " th:field="*{format}">
+                                <option th:each="formatValue : ${T(com.danzal.lib_project.domain.Format).values()}"
+                                        th:value="${formatValue.name()}" th:text="${formatValue.name()}">1</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Language</label>
+                            <select class="form-control" style="margin-left: auto " th:field="*{language}">
+                                <option th:each="languageValue : ${T(com.danzal.lib_project.domain.Language).values()}"
+                                        th:value="${languageValue.name()}" th:text="${languageValue.name()}">1</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row" style="margin-left: auto ">
+                                <label>Publication Year</label>
+                                <input type="text" class="form-control" th:field="*{pubYear}"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="row" style="margin-left: auto ">
-                                <label>Last name</label>
-                                <input type="text" class="form-control" th:field="*{lastName}"/>
+                                <label>Publisher</label>
+                                <input type="text" class="form-control" th:field="*{publisher}"/>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Nationality</label>
-                            <select class="form-control" style="margin-left: auto " th:field="*{nationality}">
-                                <option th:each="nationalityValue : ${T(com.danzal.lib_project.domain.Nationality).values()}"
-                                        th:value="${nationalityValue.name()}" th:text="${nationalityValue.name()}">1</option>
-                            </select>
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3"
+                                      th:field="*{description}" style="margin-left: auto"></textarea>
                         </div>
 
-
-
-                        <div class="form-group">
-                            <label for="exampleSelect2">Books</label>
-                            <select multiple="" class="form-control" id="exampleSelect2" th:field="*{bookId}">
-                                <option  th:each="book : ${books}" th:value="${book.id}"  th:text="${book.getTitle()}">1</option>
-                            </select>
-                        </div>
-                        </fieldset>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                     </fieldset>
                 </form>
             </div>
@@ -103,7 +126,6 @@
 
 
 </div>
-
 
 
 <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>

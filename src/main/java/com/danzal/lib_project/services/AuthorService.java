@@ -2,6 +2,7 @@ package com.danzal.lib_project.services;
 
 import com.danzal.lib_project.commands.AuthorCommand;
 import com.danzal.lib_project.domain.Author;
+import com.danzal.lib_project.domain.Book;
 
 import java.util.Set;
 
@@ -9,8 +10,9 @@ public interface AuthorService {
 
     Set<Author> getAuthors();
 
-    Author findById(Long l);
+    Set<Book> getBooks();
 
+    Author findById(Long l);
 
     AuthorCommand findCommandById(Long l);
 

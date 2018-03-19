@@ -59,7 +59,7 @@
 <div class="container" style="margin-top: 10rem;">
     <h2 style="text-align: center">The book management panel</h2>
     <div class="row" style="margin-top: 2rem;">
-        <a class="btn btn-primary btn-lg" href="#" role="button" th:href="${'/authors/add'}">Add book</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button" th:href="${'/books/new'}">Add book</a>
     </div>
 </div>
 
@@ -86,25 +86,22 @@
 
                         <td>
                             <ul th:each="author : ${book.authors}">
-                                <li>First</li>
-                                <li>Second</li>
-                                <li  th:text="${author.getFirstName()}">Author</li>
+                                <li th:remove="all">First</li>
+                                <li th:remove="all">Second</li>
+                                <li  th:text="${author.getNames()}">Author</li>
                             </ul>
                         </td>
-
-
-
                         <td>
-                            <a class="btn btn-info" href="#" role="button" th:href="@{'/books/view'}">About book</a>
+                            <a class="btn btn-info" href="#" role="button" th:href="@{'/books/' + ${book.id} + '/show'}">About book</a>
                         </td>
 
                         <td>
-                            <a class="btn btn-warning" href="#" role="button" th:href="@{'/books/edit'}">Edit
+                            <a class="btn btn-warning" href="#" role="button" th:href="@{'/books/' + ${book.id} + '/update'}">Edit
                                 book</a>
                         </td>
 
                         <td>
-                            <a class="btn btn-danger" href="#" role="button" th:href="@{'/books/delete'}">Delete
+                            <a class="btn btn-danger" href="#" role="button" th:href="@{'/books/' + ${book.id} + '/delete'}">Delete
                                 author</a>
                         </td>
                     </tr>

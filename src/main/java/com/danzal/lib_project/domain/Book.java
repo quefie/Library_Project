@@ -14,62 +14,37 @@ import java.util.stream.Collectors;
 @Entity
 public class Book {
 
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "ID")
-     private Long id;
-     private String title;
-     private String format;
-     private String language;
-     private int pubYear;
-     private String publisher;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+    private String title;
 
-     @Lob
-     private String description;
+    @Enumerated(value = EnumType.STRING)
+    private Format format;
 
-     @ManyToMany(mappedBy = "books")
-     private Set<Author> authors = new HashSet<>();
+    @ElementCollection(targetClass = Long.class)
+    private Set<Long> authorId = new HashSet<>();
 
-     @ManyToOne
-     private Librarian librarian;
+    @Enumerated(value = EnumType.STRING)
+    private Language language;
 
-     @ManyToMany
-     @JoinTable(name = "category_book",
-             joinColumns = @JoinColumn(name = "book_id"),
-             inverseJoinColumns = @JoinColumn(name= "category_id"))
-     private Set<Category> categories = new HashSet<>();
+    private int pubYear;
+    private String publisher;
 
-          public Book() {
-          }
+    @Lob
+    private String description;
 
-     public Book(String title, String format, String language, int pubYear, String publisher, Set<Author> authors) {
-          this.title = title;
-          this.format = format;
-          this.language = language;
-          this.pubYear = pubYear;
-          this.publisher = publisher;
-          this.authors = authors;
-     }
+    @ManyToMany(mappedBy = "books")
+    private Set<Author> authors = new HashSet<>();
 
-     public Book(String title, String format, String language, int pubYear, String publisher) {
-               this.title = title;
-               this.format = format;
-               this.language = language;
-               this.pubYear = pubYear;
-               this.publisher = publisher;
+    @ManyToOne
+    private Librarian librarian;
 
-          }
-
-          public Book(String title, String format, String language, int pubYear, String publisher, String description, Set<Author> authors, Librarian librarian, Set<Category> categories) {
-               this.title = title;
-               this.format = format;
-               this.language = language;
-               this.pubYear = pubYear;
-               this.publisher = publisher;
-               this.description = description;
-               this.authors = authors;
-               this.librarian = librarian;
-               this.categories = categories;
-          }
+    @ManyToMany
+    @JoinTable(name = "category_book",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
 
 }

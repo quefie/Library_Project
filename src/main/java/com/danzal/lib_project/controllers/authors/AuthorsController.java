@@ -1,7 +1,7 @@
 package com.danzal.lib_project.controllers.authors;
 
 import com.danzal.lib_project.commands.AuthorCommand;
-import com.danzal.lib_project.repositories.AuthorRepository;
+import com.danzal.lib_project.repositories.BookRepository;
 import com.danzal.lib_project.services.AuthorService;
 import com.danzal.lib_project.services.BookService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.*;
 public class AuthorsController {
 
     private final AuthorService authorService;
-    private final BookService bookService;
 
-    public AuthorsController(AuthorService authorService, BookService bookService) {
+
+    public AuthorsController(AuthorService authorService) {
         this.authorService = authorService;
-        this.bookService = bookService;
     }
 
-    @RequestMapping("/authors/home")
+    @GetMapping("/authors/home")
     public String showAuthors(Model model){
 
         model.addAttribute("authors", authorService.getAuthors());
@@ -29,37 +28,47 @@ public class AuthorsController {
         return "/authors/home";
     }
 
+    @GetMapping("/authors/{id}/show")
+    public String showById(@PathVariable String id, Model model){
+
+        model.addAttribute("author", authorService.findById(new Long(id)));
+
+        model.addAttribute("books", authorService.getBooks());
+        return "authors/show";
+    }
+
+
     @GetMapping("/authors/new")
     public String newAuthor( Model model){
         model.addAttribute("author", new AuthorCommand());
-        model.addAttribute("books", bookService.getBooks());
+        model.addAttribute("books", authorService.getBooks());
 
         return "authors/authorform";
     }
 
 
-    @GetMapping("author/{id}/update")
+    @GetMapping("authors/{id}/update")
     public String updateAuthor(@PathVariable String id, Model model){
         model.addAttribute("author", authorService.findCommandById(Long.valueOf(id)));
-
-        return "author/authorform";
+        model.addAttribute("books", authorService.getBooks());
+        return "authors/authorform";
 
     }
 
-    @PostMapping("author")
+    @PostMapping("authors")
     public String saveOrUpdate(@ModelAttribute AuthorCommand command){
 
         AuthorCommand savedCommand = authorService.saveAuthorCommand(command);
-        return "redirect:/author/" + savedCommand.getId() + "/show";
+        return "redirect:/authors/home";
     }
 
-    @GetMapping("author/{id}/delete")
+    @GetMapping("authors/{id}/delete")
     public String deleteById(@PathVariable String id){
         log.debug("Deleting id: " + id);
 
         authorService.deleteById(Long.valueOf(id));
 
-        return "redirect:/authors/show";
+        return "redirect:/authors/home";
     }
 
 }

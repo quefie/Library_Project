@@ -1,30 +1,66 @@
 package com.danzal.lib_project.controllers.books;
 
+import com.danzal.lib_project.commands.AuthorCommand;
+import com.danzal.lib_project.commands.BookCommand;
 import com.danzal.lib_project.domain.Book;
 import com.danzal.lib_project.repositories.AuthorRepository;
 import com.danzal.lib_project.services.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
 public class BooksController {
 
     private final BookService bookService;
-    private final AuthorRepository authorRepository;
 
-    public BooksController(BookService bookService, AuthorRepository authorRepository) {
+
+    public BooksController(BookService bookService) {
         this.bookService = bookService;
-        this.authorRepository = authorRepository;
     }
 
-    @RequestMapping("/books/home")
-    public String showBooks(Model model, Book book){
+    @GetMapping("/books/home")
+    public String showBooks(Model model){
 
         model.addAttribute("books", bookService.getBooks());
+        model.addAttribute("authors", bookService.getAuthors());
 
-        model.addAttribute("authors", bookService.getBookAuthors().equals(book));
         return "books/home";
     }
+
+    @GetMapping("/books/{id}/show")
+    public String showById(@PathVariable String id, Model model){
+
+        model.addAttribute("book", bookService.findById(new Long(id)));
+        model.addAttribute("authors", bookService.getAuthors());
+
+        return "books/show";
+    }
+
+    @GetMapping("books/new")
+    public String newBook(Model model){
+
+        model.addAttribute("book", new BookCommand());
+        model.addAttribute("authors", bookService.getAuthors());
+
+        return "books/bookform";
+    }
+
+    @PostMapping("books")
+    public String saveOrUpdate(@ModelAttribute BookCommand command){
+
+        BookCommand savedBook = bookService.saveBookCommand(command);
+
+        return "redirect:/books/home";
+    }
+
+    @GetMapping("books/{id}/delete")
+    public String deleteById(@PathVariable String id){
+
+        bookService.deleteById(Long.valueOf(id));
+
+        return "redirect:/books/home";
+    }
+
 }

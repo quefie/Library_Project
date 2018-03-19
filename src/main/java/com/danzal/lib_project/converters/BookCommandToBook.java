@@ -33,6 +33,10 @@ public class BookCommandToBook implements Converter<BookCommand,Book> {
         book.setFormat(source.getFormat());
         book.setDescription(source.getDescription());
 
+        if(source.getAuthorId() != null && source.getAuthorId().size()>0) {
+            source.getAuthorId().forEach(id -> book.getAuthorId().add(id));
+        }
+
 
         return book;
     }

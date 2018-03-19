@@ -40,6 +40,14 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
+    public Set<Book> getBooks() {
+        Set<Book> books = new HashSet<>();
+        bookRepository.findAll().iterator().forEachRemaining(books::add);
+
+        return books;
+    }
+
+    @Override
     public Author findById(Long l) {
         Optional<Author> authorOptional = authorRepository.findById(l);
 
