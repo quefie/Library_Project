@@ -1,4 +1,4 @@
-package com.danzal.lib_project.services;
+package com.danzal.lib_project.services.Author;
 
 import com.danzal.lib_project.commands.AuthorCommand;
 import com.danzal.lib_project.domain.Author;

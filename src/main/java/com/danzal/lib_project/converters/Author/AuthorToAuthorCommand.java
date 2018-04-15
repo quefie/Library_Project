@@ -1,6 +1,7 @@
-package com.danzal.lib_project.converters;
+package com.danzal.lib_project.converters.Author;
 
 import com.danzal.lib_project.commands.AuthorCommand;
+import com.danzal.lib_project.converters.Book.BookToBookCommand;
 import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
 import lombok.Synchronized;

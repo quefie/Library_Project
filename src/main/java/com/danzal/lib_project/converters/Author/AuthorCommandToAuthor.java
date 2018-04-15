@@ -1,8 +1,8 @@
-package com.danzal.lib_project.converters;
+package com.danzal.lib_project.converters.Author;
 
 import com.danzal.lib_project.commands.AuthorCommand;
+import com.danzal.lib_project.converters.Book.BookCommandToBook;
 import com.danzal.lib_project.domain.Author;
-import com.danzal.lib_project.domain.Book;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;

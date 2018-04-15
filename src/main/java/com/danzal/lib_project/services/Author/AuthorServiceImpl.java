@@ -1,8 +1,8 @@
-package com.danzal.lib_project.services;
+package com.danzal.lib_project.services.Author;
 
 import com.danzal.lib_project.commands.AuthorCommand;
-import com.danzal.lib_project.converters.AuthorCommandToAuthor;
-import com.danzal.lib_project.converters.AuthorToAuthorCommand;
+import com.danzal.lib_project.converters.Author.AuthorCommandToAuthor;
+import com.danzal.lib_project.converters.Author.AuthorToAuthorCommand;
 import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
 import com.danzal.lib_project.repositories.AuthorRepository;

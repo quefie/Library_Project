@@ -1,9 +1,7 @@
 package com.danzal.lib_project.controllers.authors;
 
 import com.danzal.lib_project.commands.AuthorCommand;
-import com.danzal.lib_project.repositories.BookRepository;
-import com.danzal.lib_project.services.AuthorService;
-import com.danzal.lib_project.services.BookService;
+import com.danzal.lib_project.services.Author.AuthorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +18,7 @@ public class AuthorsController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/authors/home")
+    @GetMapping({"/authors/home", "/authors/home"})
     public String showAuthors(Model model){
 
         model.addAttribute("authors", authorService.getAuthors());

@@ -1,10 +1,7 @@
 package com.danzal.lib_project.controllers.books;
 
-import com.danzal.lib_project.commands.AuthorCommand;
 import com.danzal.lib_project.commands.BookCommand;
-import com.danzal.lib_project.domain.Book;
-import com.danzal.lib_project.repositories.AuthorRepository;
-import com.danzal.lib_project.services.BookService;
+import com.danzal.lib_project.services.Book.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

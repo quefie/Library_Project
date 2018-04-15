@@ -1,4 +1,4 @@
-package com.danzal.lib_project.converters;
+package com.danzal.lib_project.converters.Book;
 
 import com.danzal.lib_project.commands.AuthorCommand;
 import com.danzal.lib_project.commands.BookCommand;

@@ -17,6 +17,7 @@ public class BookCommand {
     private String title;
     private Format format;
     private Set<Long> authorId = new HashSet<>();
+    private Set<Author> authors = new HashSet<>();
     private Language language;
     private int pubYear;
     private String publisher;

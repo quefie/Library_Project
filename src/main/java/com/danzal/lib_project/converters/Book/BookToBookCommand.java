@@ -1,6 +1,8 @@
-package com.danzal.lib_project.converters;
+package com.danzal.lib_project.converters.Book;
 
 import com.danzal.lib_project.commands.BookCommand;
+import com.danzal.lib_project.converters.Author.AuthorCommandToAuthor;
+import com.danzal.lib_project.converters.Author.AuthorToAuthorCommand;
 import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
 import lombok.Synchronized;
@@ -31,6 +33,9 @@ public class BookToBookCommand implements Converter<Book,BookCommand> {
         bookCommand.setFormat(source.getFormat());
         bookCommand.setDescription(source.getDescription());
 
+        if(source.getAuthors() != null && source.getAuthors().size()>0){
+            source.getAuthors().forEach((Author author) -> bookCommand.getAuthors().add(author));
+        }
 
 
         return bookCommand;
