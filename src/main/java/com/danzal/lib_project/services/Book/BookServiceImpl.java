@@ -5,6 +5,7 @@ import com.danzal.lib_project.converters.Book.BookCommandToBook;
 import com.danzal.lib_project.converters.Book.BookToBookCommand;
 import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
+import com.danzal.lib_project.exceptions.NotFoundException;
 import com.danzal.lib_project.repositories.AuthorRepository;
 import com.danzal.lib_project.repositories.BookRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +58,7 @@ public class BookServiceImpl implements BookService {
         Optional<Book> bookOptional = bookRepository.findById(l);
 
         if(!bookOptional.isPresent()){
-            throw new RuntimeException("Book Not Found!");
+            throw new NotFoundException("Book Not Found! For ID value: " + l.toString());
         }
 
         return bookOptional.get();
