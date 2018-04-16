@@ -47,7 +47,7 @@ public class AuthorsControllerTest {
     public void testMockMVC() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(authorsController).build();
 
-        mockMvc.perform(get("/authors/")).
+        mockMvc.perform(get("/authors/home/")).
                 andExpect(status().isOk()).
                 andExpect(view().name("/authors/home"));
     }
