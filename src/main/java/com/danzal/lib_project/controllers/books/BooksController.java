@@ -62,9 +62,7 @@ public class BooksController {
 
             return "books/bookform";
         }
-
         BookCommand savedBook = bookService.saveBookCommand(command);
-
         return "redirect:/books/home";
     }
 
