@@ -8,7 +8,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookCommandToBook implements Converter<BookCommand,Book> {
+public class BookCommandToBook implements Converter<BookCommand, Book> {
 
 
     @Nullable
@@ -16,7 +16,7 @@ public class BookCommandToBook implements Converter<BookCommand,Book> {
     @Override
     public Book convert(BookCommand source) {
 
-        if(source==null){
+        if (source == null) {
             return null;
         }
 
@@ -32,7 +32,7 @@ public class BookCommandToBook implements Converter<BookCommand,Book> {
         book.setDescription(source.getDescription());
         book.setCategory(source.getCategory());
 
-        if(source.getAuthorId() != null && source.getAuthorId().size()>0) {
+        if (source.getAuthorId() != null && source.getAuthorId().size() > 0) {
             source.getAuthorId().forEach(id -> book.getAuthorId().add(id));
         }
 

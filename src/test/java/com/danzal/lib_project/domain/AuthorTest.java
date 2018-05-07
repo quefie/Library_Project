@@ -22,7 +22,7 @@ public class AuthorTest {
     Author author;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         author = new Author();
     }
 

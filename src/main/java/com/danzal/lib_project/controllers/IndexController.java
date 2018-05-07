@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 
-    @RequestMapping({"","/","/index"})
-    public String getIndexPage(){
+    @RequestMapping({"", "/", "/index"})
+    public String getIndexPage() {
 
         //model.addAttribute("authors", authorService.getAuthors());
         return "index";

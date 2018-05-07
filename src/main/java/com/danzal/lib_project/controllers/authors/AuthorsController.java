@@ -25,7 +25,7 @@ public class AuthorsController {
     }
 
     @GetMapping({"/authors/home", "/authors/home"})
-    public String showAuthors(Model model){
+    public String showAuthors(Model model) {
 
         model.addAttribute("authors", authorService.getAuthors());
 
@@ -33,7 +33,7 @@ public class AuthorsController {
     }
 
     @GetMapping("/authors/{id}/show")
-    public String showById(@PathVariable String id, Model model){
+    public String showById(@PathVariable String id, Model model) {
 
         model.addAttribute("author", authorService.findById(new Long(id)));
 
@@ -43,7 +43,7 @@ public class AuthorsController {
 
 
     @GetMapping("/authors/new")
-    public String newAuthor( Model model){
+    public String newAuthor(Model model) {
         model.addAttribute("author", new AuthorCommand());
         model.addAttribute("books", authorService.getBooks());
 
@@ -52,7 +52,7 @@ public class AuthorsController {
 
 
     @GetMapping({"authors/{id}/update", "/authors/{id}/update"})
-    public String updateAuthor(@PathVariable String id, Model model){
+    public String updateAuthor(@PathVariable String id, Model model) {
         model.addAttribute("author", authorService.findCommandById(Long.valueOf(id)));
         model.addAttribute("books", authorService.getBooks());
         return "authors/authorform";
@@ -75,7 +75,7 @@ public class AuthorsController {
     }
 
     @GetMapping("authors/{id}/delete")
-    public String deleteById(@PathVariable String id){
+    public String deleteById(@PathVariable String id) {
         log.debug("Deleting id: " + id);
 
         authorService.deleteById(Long.valueOf(id));

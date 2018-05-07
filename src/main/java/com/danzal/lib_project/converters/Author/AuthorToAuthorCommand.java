@@ -10,7 +10,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuthorToAuthorCommand implements Converter<Author,AuthorCommand> {
+public class AuthorToAuthorCommand implements Converter<Author, AuthorCommand> {
 
     private final BookToBookCommand bookConverter;
 
@@ -23,7 +23,7 @@ public class AuthorToAuthorCommand implements Converter<Author,AuthorCommand> {
     @Override
     public AuthorCommand convert(Author source) {
 
-        if(source==null){
+        if (source == null) {
             return null;
         }
 
@@ -34,7 +34,7 @@ public class AuthorToAuthorCommand implements Converter<Author,AuthorCommand> {
         authorCommand.setId(source.getId());
         authorCommand.setFirstName(source.getFirstName());
 
-        if(source.getBooks() != null && source.getBooks().size()>0){
+        if (source.getBooks() != null && source.getBooks().size() > 0) {
             source.getBooks().forEach((Book book) -> authorCommand.getBooks().add(bookConverter.convert(book)));
         }
 

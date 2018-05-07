@@ -1,6 +1,5 @@
 package com.danzal.lib_project.commands;
 
-import com.danzal.lib_project.domain.Book;
 import com.danzal.lib_project.domain.Nationality;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

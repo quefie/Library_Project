@@ -1,7 +1,6 @@
 package com.danzal.lib_project.converters.Librarian;
 
 import com.danzal.lib_project.commands.LibrarianCommand;
-import com.danzal.lib_project.converters.Book.BookToBookCommand;
 import com.danzal.lib_project.domain.Book;
 import com.danzal.lib_project.domain.Librarian;
 import lombok.Synchronized;
@@ -9,16 +8,14 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Convert;
-
 @Component
-public class LibrarianToLibrarianCommand implements Converter<Librarian,LibrarianCommand> {
+public class LibrarianToLibrarianCommand implements Converter<Librarian, LibrarianCommand> {
 
     @Nullable
     @Synchronized
     @Override
     public LibrarianCommand convert(Librarian source) {
-        if(source == null) {
+        if (source == null) {
             return null;
         }
 
@@ -30,7 +27,7 @@ public class LibrarianToLibrarianCommand implements Converter<Librarian,Libraria
         librarianCommand.setId(source.getId());
         librarianCommand.setFirstName(source.getFirstName());
 
-        if(source.getLoanBooks() != null && source.getLoanBooks().size() >0){
+        if (source.getLoanBooks() != null && source.getLoanBooks().size() > 0) {
             source.getLoanBooks().forEach((Book book) -> librarianCommand.getLoanBooks().add(book));
         }
 

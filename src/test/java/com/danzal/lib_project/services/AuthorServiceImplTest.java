@@ -15,10 +15,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class AuthorServiceImplTest {
 
@@ -40,7 +38,7 @@ public class AuthorServiceImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        authorService = new AuthorServiceImpl(authorRepository,authorCommandToAuthor,authorToAuthorCommand,bookRepository);
+        authorService = new AuthorServiceImpl(authorRepository, authorCommandToAuthor, authorToAuthorCommand, bookRepository);
     }
 
     @Test

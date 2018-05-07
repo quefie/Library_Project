@@ -8,16 +8,14 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Null;
-
 @Component
-public class LibrarianCommandToLibrarian implements Converter<LibrarianCommand,Librarian> {
+public class LibrarianCommandToLibrarian implements Converter<LibrarianCommand, Librarian> {
 
     @Nullable
     @Synchronized
     @Override
     public Librarian convert(LibrarianCommand source) {
-        if(source == null) {
+        if (source == null) {
             return null;
         }
 
@@ -29,7 +27,7 @@ public class LibrarianCommandToLibrarian implements Converter<LibrarianCommand,L
         librarian.setId(source.getId());
         librarian.setFirstName(source.getFirstName());
 
-        if(source.getLoanBookId() != null && source.getLoanBookId().size() >0){
+        if (source.getLoanBookId() != null && source.getLoanBookId().size() > 0) {
             source.getLoanBookId().forEach(id -> librarian.getLoanBookId().add(id));
         }
 

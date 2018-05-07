@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Slf4j
 @Service
-public class AuthorServiceImpl implements AuthorService{
+public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
     private final AuthorCommandToAuthor authorCommandToAuthor;
@@ -51,13 +51,12 @@ public class AuthorServiceImpl implements AuthorService{
     public Author findById(Long l) {
         Optional<Author> authorOptional = authorRepository.findById(l);
 
-        if(!authorOptional.isPresent()){
+        if (!authorOptional.isPresent()) {
             throw new RuntimeException("Author Not Found!");
         }
 
         return authorOptional.get();
     }
-
 
 
     @Override
@@ -72,8 +71,8 @@ public class AuthorServiceImpl implements AuthorService{
         Author detachedAuthor = authorCommandToAuthor.convert(command);
 
         Author savedAuthor = authorRepository.save(detachedAuthor);
-        for (Long bookId: savedAuthor.getBookId()
-             ) {
+        for (Long bookId : savedAuthor.getBookId()
+                ) {
             savedAuthor.getBooks().add(bookRepository.findById(bookId).get());
         }
 

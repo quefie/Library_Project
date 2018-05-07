@@ -51,13 +51,13 @@ public class BookServiceImpl implements BookService {
         authorRepository.findAll().iterator().forEachRemaining(bookAuthors::add);
 
         return bookAuthors;
-        }
+    }
 
     @Override
     public Book findById(Long l) {
         Optional<Book> bookOptional = bookRepository.findById(l);
 
-        if(!bookOptional.isPresent()){
+        if (!bookOptional.isPresent()) {
             throw new NotFoundException("Book Not Found! For ID value: " + l.toString());
         }
 
@@ -77,10 +77,10 @@ public class BookServiceImpl implements BookService {
 
         Book savedBook = bookRepository.save(detachedBook);
 
-        for (Long authorId: savedBook.getAuthorId()
-             ) {
+        for (Long authorId : savedBook.getAuthorId()
+                ) {
             authorRepository.findById(authorId).get().getBooks().add(bookRepository.findById(savedBook.getId()).get());
-           // savedBook.getAuthors().add(authorRepository.findById(authorId).get());
+            // savedBook.getAuthors().add(authorRepository.findById(authorId).get());
         }
 
         log.debug("Saved BookID: " + savedBook.getId());

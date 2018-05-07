@@ -25,7 +25,7 @@ public class BooksController {
     }
 
     @GetMapping("/books/home")
-    public String showBooks(Model model){
+    public String showBooks(Model model) {
 
         model.addAttribute("books", bookService.getBooks());
         model.addAttribute("authors", bookService.getAuthors());
@@ -34,7 +34,7 @@ public class BooksController {
     }
 
     @GetMapping("/books/{id}/show")
-    public String showById(@PathVariable String id, Model model){
+    public String showById(@PathVariable String id, Model model) {
 
         model.addAttribute("book", bookService.findById(new Long(id)));
         model.addAttribute("authors", bookService.getAuthors());
@@ -43,7 +43,7 @@ public class BooksController {
     }
 
     @GetMapping("/books/new")
-    public String newBook(Model model){
+    public String newBook(Model model) {
 
         model.addAttribute("book", new BookCommand());
         model.addAttribute("authors", bookService.getAuthors());
@@ -67,7 +67,7 @@ public class BooksController {
     }
 
     @GetMapping("/books/{id}/delete")
-    public String deleteById(@PathVariable String id){
+    public String deleteById(@PathVariable String id) {
 
         bookService.deleteById(Long.valueOf(id));
 

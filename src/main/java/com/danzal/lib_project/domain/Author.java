@@ -1,8 +1,6 @@
 package com.danzal.lib_project.domain;
 
-import com.danzal.lib_project.repositories.BookRepository;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -33,7 +31,6 @@ public class Author {
     public String getNames() {
         return this.firstName + " " + this.lastName;
     }
-
 
 
 }

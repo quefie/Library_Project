@@ -83,7 +83,8 @@
                             <label>Format</label>
                             <select class="form-control" style="margin-left: auto " th:field="*{format}">
                                 <option th:each="formatValue : ${T(com.danzal.lib_project.domain.Format).values()}"
-                                        th:value="${formatValue.name()}" th:text="${formatValue.name()}">1</option>
+                                        th:value="${formatValue.name()}" th:text="${formatValue.name()}">1
+                                </option>
                             </select>
                         </div>
 
@@ -92,7 +93,8 @@
                             <label>Language</label>
                             <select class="form-control" style="margin-left: auto " th:field="*{language}">
                                 <option th:each="languageValue : ${T(com.danzal.lib_project.domain.Language).values()}"
-                                        th:value="${languageValue.name()}" th:text="${languageValue.name()}">1</option>
+                                        th:value="${languageValue.name()}" th:text="${languageValue.name()}">1
+                                </option>
                             </select>
                         </div>
 

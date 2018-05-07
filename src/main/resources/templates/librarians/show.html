@@ -54,12 +54,11 @@
 </div>
 
 
-
-
 <div class="container" style="margin-top: 10rem;">
     <h2 style="text-align: center">Librarian infomation</h2>
     <div class="row" style="margin-top: 2rem;">
-        <a class="btn btn-primary btn-lg" href="#" role="button" th:href="@{'/librarians/' + ${librarian.id} + '/update'}">Edit librarian</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button"
+           th:href="@{'/librarians/' + ${librarian.id} + '/update'}">Edit librarian</a>
     </div>
 </div>
 
@@ -70,31 +69,33 @@
                 <div class="card mb-12" style="margin-right: auto; margin-left: auto">
                     <h4 class="card-header">About librarian</h4>
                     <div class="card-body" style="margin-left: 3rem">
-                        <h4 class="card-title" style="margin-left: 3rem" th:text="'Librarian: '+ ${librarian.firstName} + ' ' + ${librarian.lastName}">Name here</h4>
-                     </div>
-                        <ul class="list-group list-group-flush" style=" margin-top: 2rem;">
-                            <li class="list-group-item">
-                              <h4 class="card-title" style="margin-left: 3rem" th:text="'Adress:'">Adress here</h4>
-                               <h5 class="card-title" style="margin-left: 6rem" th:text=" ${librarian.adress}">Adress here</h5>
-                            </li>
-                     </ul>
+                        <h4 class="card-title" style="margin-left: 3rem"
+                            th:text="'Librarian: '+ ${librarian.firstName} + ' ' + ${librarian.lastName}">Name here</h4>
+                    </div>
+                    <ul class="list-group list-group-flush" style=" margin-top: 2rem;">
+                        <li class="list-group-item">
+                            <h4 class="card-title" style="margin-left: 3rem" th:text="'Adress:'">Adress here</h4>
+                            <h5 class="card-title" style="margin-left: 6rem" th:text=" ${librarian.adress}">Adress
+                                here</h5>
+                        </li>
+                    </ul>
                     <div class="card-body" style="margin-left: 3rem">
                         <ul th:each="book : ${librarian.loanBooks}">
-                            <a href="#" class="list-group-item list-group-item-action active" th:text="${book.getTitle()}" th:href="@{'/books/' + ${book.getId()} + '/show'}">
+                            <a href="#" class="list-group-item list-group-item-action active"
+                               th:text="${book.getTitle()}" th:href="@{'/books/' + ${book.getId()} + '/show'}">
                                 Book
                             </a>
                         </ul>
                     </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-
-<script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
-<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
-<script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

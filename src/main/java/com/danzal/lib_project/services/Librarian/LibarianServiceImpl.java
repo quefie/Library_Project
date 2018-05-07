@@ -1,7 +1,6 @@
 package com.danzal.lib_project.services.Librarian;
 
 
-import com.danzal.lib_project.commands.BookCommand;
 import com.danzal.lib_project.commands.LibrarianCommand;
 import com.danzal.lib_project.converters.Librarian.LibrarianCommandToLibrarian;
 import com.danzal.lib_project.converters.Librarian.LibrarianToLibrarianCommand;
@@ -55,7 +54,7 @@ public class LibarianServiceImpl implements LibrarianService {
     public Librarian findById(Long l) {
         Optional<Librarian> librarianOptional = librarianRepository.findById(l);
 
-        if (!librarianOptional.isPresent()){
+        if (!librarianOptional.isPresent()) {
             throw new RuntimeException("Librarian not found");
         }
 
@@ -75,7 +74,7 @@ public class LibarianServiceImpl implements LibrarianService {
 
         Librarian savedLibrarian = librarianRepository.save(detachedLibrarian);
 
-        for(Long bookId : savedLibrarian.getLoanBookId()){
+        for (Long bookId : savedLibrarian.getLoanBookId()) {
             bookRepository.findById(bookId).get().setLibrarian(savedLibrarian);
         }
 
