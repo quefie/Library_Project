@@ -22,6 +22,7 @@ public class BookCommand {
     private int pubYear;
     private String publisher;
     private String description;
+    private Set<Category> categories = new HashSet<>();
     private Librarian librarian;
 
 
