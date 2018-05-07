@@ -74,7 +74,6 @@ public class BookTest {
         authors.add(author1);
         authors.add(author2);
 
-
         book.setAuthors(authors);
         assertEquals(book.getAuthors().size(), 3);
         assertEquals(book.getAuthors().iterator().next().getId(), authors.iterator().next().getId());
