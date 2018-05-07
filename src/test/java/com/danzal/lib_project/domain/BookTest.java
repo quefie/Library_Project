@@ -70,7 +70,6 @@ public class BookTest {
         Set<Author> authors = new HashSet<>();
         Author author2 = new Author();
         author2.setId(AUTH_ID3);
-
         authors.add(author);
         authors.add(author1);
         authors.add(author2);
