@@ -40,6 +40,6 @@ public class Book {
     private Librarian librarian;
 
     @Enumerated(value = EnumType.STRING)
-    private Set<Category> categories = new HashSet<>();
+    private Category category;
 
 }

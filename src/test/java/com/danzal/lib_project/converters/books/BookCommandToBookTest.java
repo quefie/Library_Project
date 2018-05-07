@@ -17,8 +17,7 @@ public class BookCommandToBookTest {
     public static String PUBLISHER = "Test publisher";
     public static String DESCRIPTION = "Test description";
     public static Long LIBRARIAN_ID1 = new Long(1L);
-    public static Category CATEGORY1 = Category.BIOGRAPHIES;
-    public static Category CATEGORY2 = Category.FANTASY;
+    public static Category CATEGORY = Category.BIOGRAPHIES;
 
     BookCommandToBook bookCommandToBook;
 
@@ -48,8 +47,7 @@ public class BookCommandToBookTest {
         bookCommand.setLanguage(LANGUAGE);
         bookCommand.setPublisher(PUBLISHER);
         bookCommand.setDescription(DESCRIPTION);
-        bookCommand.getCategories().add(CATEGORY1);
-        bookCommand.getCategories().add(CATEGORY2);
+        bookCommand.setCategory(CATEGORY);
 
         Librarian librarian = new Librarian();
         librarian.setId(LIBRARIAN_ID1);
@@ -64,7 +62,7 @@ public class BookCommandToBookTest {
         assertEquals(LANGUAGE, book.getLanguage());
         assertEquals(PUBLISHER, book.getPublisher());
         assertEquals(DESCRIPTION, book.getDescription());
-        assertEquals(2, book.getCategories().size());
+        assertEquals(CATEGORY, book.getCategory());
         assertEquals(LIBRARIAN_ID1, book.getLibrarian().getId());
     }
 }

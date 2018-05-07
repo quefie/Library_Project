@@ -3,7 +3,6 @@ package com.danzal.lib_project.converters.Book;
 import com.danzal.lib_project.commands.BookCommand;
 import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
-import com.danzal.lib_project.domain.Category;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
@@ -31,10 +30,7 @@ public class BookToBookCommand implements Converter<Book,BookCommand> {
         bookCommand.setId(source.getId());
         bookCommand.setFormat(source.getFormat());
         bookCommand.setDescription(source.getDescription());
-
-        if (source.getCategories() != null && source.getCategories().size() > 0) {
-            source.getCategories().forEach((Category category) -> bookCommand.getCategories().add(category));
-        }
+        bookCommand.setCategory(source.getCategory());
 
         if(source.getAuthors() != null && source.getAuthors().size()>0){
             source.getAuthors().forEach((Author author) -> bookCommand.getAuthors().add(author));
