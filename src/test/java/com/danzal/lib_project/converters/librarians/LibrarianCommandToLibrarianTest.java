@@ -21,7 +21,7 @@ public class LibrarianCommandToLibrarianTest {
     LibrarianCommandToLibrarian librarianCommandToLibrarian;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         librarianCommandToLibrarian = new LibrarianCommandToLibrarian();
     }
 

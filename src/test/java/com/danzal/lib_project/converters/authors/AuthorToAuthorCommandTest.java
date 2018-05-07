@@ -27,7 +27,7 @@ public class AuthorToAuthorCommandTest {
     AuthorToAuthorCommand converter;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         converter = new AuthorToAuthorCommand(new BookToBookCommand());
     }
 

@@ -24,7 +24,7 @@ public class AuthorCommandToAuthorTest {
     AuthorCommandToAuthor authorCommandToAuthor;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         authorCommandToAuthor = new AuthorCommandToAuthor(new BookCommandToBook());
     }
 

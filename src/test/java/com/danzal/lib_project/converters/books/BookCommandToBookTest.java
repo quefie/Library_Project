@@ -23,7 +23,7 @@ public class BookCommandToBookTest {
 
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         bookCommandToBook = new BookCommandToBook();
     }
 

@@ -23,7 +23,7 @@ public class LibrarianToLibrarianCommandTest {
     LibrarianToLibrarianCommand librarianToLibrarianCommand;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         librarianToLibrarianCommand = new LibrarianToLibrarianCommand();
     }
 
