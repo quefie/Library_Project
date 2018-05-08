@@ -10,7 +10,7 @@ coverage:
   status:
     project: yes
     patch: yes
-    changes: yes
+    changes: no
 
 parsers:
   gcov:
@@ -23,4 +23,4 @@ parsers:
 comment:
   layout: "header, diff"
   behavior: default
-  require_changes: yes
+  require_changes: no
