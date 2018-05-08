@@ -1,5 +1,4 @@
 codecov:
-  strict_yaml_branch: danzal
   notify:
     require_ci_to_pass: yes
 
@@ -24,4 +23,4 @@ parsers:
 comment:
   layout: "header, diff"
   behavior: default
-  require_changes: yes
+  require_changes: no
