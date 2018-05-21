@@ -5,6 +5,7 @@ import com.danzal.lib_project.converters.Author.AuthorCommandToAuthor;
 import com.danzal.lib_project.converters.Author.AuthorToAuthorCommand;
 import com.danzal.lib_project.domain.Author;
 import com.danzal.lib_project.domain.Book;
+import com.danzal.lib_project.exceptions.NotFoundException;
 import com.danzal.lib_project.repositories.AuthorRepository;
 import com.danzal.lib_project.repositories.BookRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -52,7 +53,7 @@ public class AuthorServiceImpl implements AuthorService {
         Optional<Author> authorOptional = authorRepository.findById(l);
 
         if (!authorOptional.isPresent()) {
-            throw new RuntimeException("Author Not Found!");
+            throw new NotFoundException("Author Not Found!");
         }
 
         return authorOptional.get();
