@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://sql.serwer1853853.home.pl/26753852_danzal
     username: 26753852_danzal
-    password: Lpvjs,vor123
+    password:
     platform: mysql
   jpa:
     hibernate:
