@@ -4,7 +4,7 @@ Projekt aplikacji webowej do zarządzania księgarnią.
 
 Aplikacja pozwala na podstawowe funkcjonalności typu CRUD na bazie danych. 
 
-Strona aplikacji: zaleskix.pl
+Strona aplikacji: http://zaleskix.pl
 
 Użyte technologie: 
   - Java, 
