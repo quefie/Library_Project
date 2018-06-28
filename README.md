@@ -1,14 +1,20 @@
 # lib_project
 
-My first Java Spring Project. 
+Projekt aplikacji webowej do zarządzania księgarnią. 
 
+Aplikacja pozwala na podstawowe funkcjonalności typu CRUD na bazie danych. 
 
-Use: 
+Strona aplikacji: zaleskix.pl
 
-#Maven,
-
-#Thymeleaf,
-
-#H2 database,
-
-#JPA. 
+Użyte technologie: 
+  - Java, 
+  - Spring MVC, 
+  - Hibernate, 
+  - JSP, 
+  - HTML, 
+  - MySQL, 
+  - Tomcat, 
+  - Project Lombok, 
+  - jUnit, 
+  - Mockito, 
+  - Maven.
