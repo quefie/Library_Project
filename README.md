@@ -1,6 +1,6 @@
 # lib_project
 
-Projekt aplikacji webowej do zarządzania księgarnią. 
+Projekt aplikacji webowej do zarządzania biblioteką. 
 
 Aplikacja pozwala na podstawowe funkcjonalności typu CRUD na bazie danych. 
 
