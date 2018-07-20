@@ -1,8 +1,7 @@
-# lib_project
+#lib_project
 
-Projekt aplikacji webowej do zarządzania biblioteką. 
-
-Aplikacja pozwala na podstawowe funkcjonalności typu CRUD na bazie danych. 
+Projekt aplikacji webowej do zarządzania biblioteką.
+Aplikacja pozwala na podstawowe funkcjonalności typu CRUD na bazie danych MySQL. 
 
 Strona aplikacji: http://zaleskix.pl
 
