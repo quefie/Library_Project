@@ -1,4 +1,1 @@
-test2
-test
-something new
-another thing
+testing GIT
